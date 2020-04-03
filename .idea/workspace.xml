@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4bffedd5-2e77-43ab-8e14-7cc3bb919144" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photoblogproject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/photoblogproject/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +83,8 @@
       <workItem from="1585155758618" duration="951000" />
       <workItem from="1585580543844" duration="3495000" />
       <workItem from="1585750352834" duration="10524000" />
-      <workItem from="1585848766611" duration="3497000" />
+      <workItem from="1585848766611" duration="3694000" />
+      <workItem from="1585936284778" duration="1759000" />
     </task>
     <task id="LOCAL-00001" summary="yazım hataları giderildi">
       <created>1585750833704</created>
@@ -114,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585770205717</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added Blog models">
+      <created>1585852900158</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1585852900158</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,25 +132,26 @@
     <MESSAGE value="Added Database and Uptade Project" />
     <MESSAGE value="Added Blog" />
     <MESSAGE value="Added Admin Panel" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Admin Panel" />
+    <MESSAGE value="Added Blog models" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Blog models" />
   </component>
   <component name="WindowStateProjectService">
     <state x="137" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585750613860">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="137" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.768/1366.0.1280.1024@0.0.1366.768" timestamp="1585750613860" />
-    <state x="434" y="0" key="CommitChangelistDialog2" timestamp="1585770204639">
+    <state x="434" y="0" key="CommitChangelistDialog2" timestamp="1585852898969">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="434" y="0" key="CommitChangelistDialog2/0.0.1366.768/1366.0.1280.1024@0.0.1366.768" timestamp="1585770204639" />
-    <state x="275" y="117" key="Vcs.Push.Dialog.v2" timestamp="1585770209970">
+    <state x="434" y="0" key="CommitChangelistDialog2/0.0.1366.768/1366.0.1280.1024@0.0.1366.768" timestamp="1585852898969" />
+    <state x="275" y="117" key="Vcs.Push.Dialog.v2" timestamp="1585852904161">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="275" y="117" key="Vcs.Push.Dialog.v2/0.0.1366.768/1366.0.1280.1024@0.0.1366.768" timestamp="1585770209970" />
-    <state x="379" y="208" key="com.intellij.ide.util.TipDialog" timestamp="1585848801360">
+    <state x="275" y="117" key="Vcs.Push.Dialog.v2/0.0.1366.768/1366.0.1280.1024@0.0.1366.768" timestamp="1585852904161" />
+    <state x="379" y="208" key="com.intellij.ide.util.TipDialog" timestamp="1585936285007">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="379" y="208" key="com.intellij.ide.util.TipDialog/0.0.1366.768/1366.0.1280.1024@0.0.1366.768" timestamp="1585848801360" />
+    <state x="379" y="208" key="com.intellij.ide.util.TipDialog/0.0.1366.768/1366.0.1280.1024@0.0.1366.768" timestamp="1585936285007" />
     <state x="492" y="301" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585770215697">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
