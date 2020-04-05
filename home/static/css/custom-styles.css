@@ -2,6 +2,7 @@ html, body {
 	font-size:12px; 
 	line-height:18px;
 	height: 100%;
+	/*margin: auto;*/
  }
 body {background: #f9f9f9 url(../img/page-bg-1.jpg);}
 
@@ -9,11 +10,13 @@ body {background: #f9f9f9 url(../img/page-bg-1.jpg);}
 	height:auto; 
 	height: 100%;
 	min-height: 100%;
+	/*margin: auto;*/
 }
 
 @media (max-width: 767px) {
   body { padding-right: 0px; padding-left: 0px; }
-  .container {margin-right: 20px; margin-left: 20px;}
+  .container {margin-right: 20px; margin-left: 20px; }
+  .ortala{margin: auto;}
  }
 
 /***** Titles and Headings *****/
@@ -68,7 +71,7 @@ blockquote.pull-right {border-right: 5px solid #999;}
 /* Landscape phones and down */
 @media (max-width: 480px) {
 	.logo, .navigation {text-align: center;}
-	.row.header {margin-bottom: 30px;}
+	.row.header {margin-bottom:30px;}
 	.logo h5 {display: block;}
 }
 /* Portrait tablet to landscape and desktop */
