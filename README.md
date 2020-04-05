@@ -1,1 +1,1 @@
-"# Django Photo Blog Project" 
+# Django Photo Blog Project
