@@ -3,13 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4bffedd5-2e77-43ab-8e14-7cc3bb919144" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/photoblogproject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/photoblogproject/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/photoblogproject/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/photoblogproject/urls.py" afterDir="false" />
     </list>
@@ -102,7 +96,7 @@
       <workItem from="1587474722312" duration="12000" />
       <workItem from="1587478829119" duration="836000" />
       <workItem from="1588199678425" duration="2117000" />
-      <workItem from="1588201849451" duration="2574000" />
+      <workItem from="1588201849451" duration="4936000" />
     </task>
     <task id="LOCAL-00001" summary="yazım hataları giderildi">
       <created>1585750833704</created>
@@ -174,7 +168,28 @@
       <option name="project" value="LOCAL" />
       <updated>1588205140842</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Cleaning">
+      <created>1588205333919</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1588205333919</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Cleaning">
+      <created>1588205364775</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1588205364775</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Cleaning">
+      <created>1588205396510</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1588205396510</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,22 +205,23 @@
     <MESSAGE value="Added Web Template (There are some bugs.)" />
     <MESSAGE value="Web Template Bug Fix" />
     <MESSAGE value="Make setting in models.py and added favicon" />
-    <option name="LAST_COMMIT_MESSAGE" value="Make setting in models.py and added favicon" />
+    <MESSAGE value="Cleaning" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaning" />
   </component>
   <component name="WindowStateProjectService">
     <state x="137" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585750613860">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="137" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.768/1366.0.1280.1024@0.0.1366.768" timestamp="1585750613860" />
-    <state x="434" y="0" key="CommitChangelistDialog2" timestamp="1588205364013">
+    <state x="434" y="0" key="CommitChangelistDialog2" timestamp="1588205394549">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="434" y="0" key="CommitChangelistDialog2/0.0.1366.768/1366.0.1280.1024@0.0.1366.768" timestamp="1588205364013" />
+    <state x="434" y="0" key="CommitChangelistDialog2/0.0.1366.768/1366.0.1280.1024@0.0.1366.768" timestamp="1588205394549" />
     <state x="434" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1586120615403" />
-    <state x="275" y="117" key="Vcs.Push.Dialog.v2" timestamp="1588205367789">
+    <state x="275" y="117" key="Vcs.Push.Dialog.v2" timestamp="1588205399727">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="275" y="117" key="Vcs.Push.Dialog.v2/0.0.1366.768/1366.0.1280.1024@0.0.1366.768" timestamp="1588205367789" />
+    <state x="275" y="117" key="Vcs.Push.Dialog.v2/0.0.1366.768/1366.0.1280.1024@0.0.1366.768" timestamp="1588205399727" />
     <state x="275" y="117" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1586120619361" />
     <state x="379" y="208" key="com.intellij.ide.util.TipDialog" timestamp="1588201849334">
       <screen x="0" y="0" width="1366" height="768" />
