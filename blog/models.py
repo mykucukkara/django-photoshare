@@ -2,6 +2,8 @@ from django.db import models
 
 
 # Create your models here.
+from django.utils.safestring import mark_safe
+
 
 class Category(models.Model):
     STATUS = (
@@ -28,7 +30,7 @@ class Blog(models.Model):
         ('False', 'Hayır'),
     )
     category = models.ForeignKey(Category, on_delete=models.CASCADE)  # relation with category table (UP)
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=150)
     keywords = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
     image = models.ImageField(blank=True, upload_to='images/')
@@ -36,6 +38,10 @@ class Blog(models.Model):
     status = models.CharField(max_length=10, choices=STATUS)
     create_at = models.DateTimeField(auto_now_add=True)
     uptade_at = models.DateTimeField(auto_now=True)
+
+    def image_tag(self):
+        return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
+    image_tag.short_description = 'Image'
 
     def __str__(self):
         return self.title

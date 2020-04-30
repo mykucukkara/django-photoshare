@@ -8,9 +8,12 @@ from blog.models import Category, Blog
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['title', 'status']
     list_filter = ['status']
-admin.site.register(Category,CategoryAdmin)
+
 
 class BlogAdmin(admin.ModelAdmin):
-    list_display = ['title', 'description', 'status']
+    list_display = ['title', 'description','image_tag', 'status']
     list_filter = ['status']
+    readonly_fields = ('image_tag',)
+
+admin.site.register(Category,CategoryAdmin)
 admin.site.register(Blog,BlogAdmin)
