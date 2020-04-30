@@ -102,7 +102,7 @@
       <workItem from="1587474722312" duration="12000" />
       <workItem from="1587478829119" duration="836000" />
       <workItem from="1588199678425" duration="2117000" />
-      <workItem from="1588201849451" duration="2312000" />
+      <workItem from="1588201849451" duration="2574000" />
     </task>
     <task id="LOCAL-00001" summary="yazım hataları giderildi">
       <created>1585750833704</created>
@@ -167,7 +167,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586120616666</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Make setting in models.py and added favicon">
+      <created>1588205140842</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1588205140842</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,22 +189,23 @@
     <MESSAGE value="Added Photo Update System" />
     <MESSAGE value="Added Web Template (There are some bugs.)" />
     <MESSAGE value="Web Template Bug Fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Web Template Bug Fix" />
+    <MESSAGE value="Make setting in models.py and added favicon" />
+    <option name="LAST_COMMIT_MESSAGE" value="Make setting in models.py and added favicon" />
   </component>
   <component name="WindowStateProjectService">
     <state x="137" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585750613860">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="137" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.768/1366.0.1280.1024@0.0.1366.768" timestamp="1585750613860" />
-    <state x="434" y="0" key="CommitChangelistDialog2" timestamp="1588205107409">
+    <state x="434" y="0" key="CommitChangelistDialog2" timestamp="1588205139848">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="434" y="0" key="CommitChangelistDialog2/0.0.1366.768/1366.0.1280.1024@0.0.1366.768" timestamp="1588205107409" />
+    <state x="434" y="0" key="CommitChangelistDialog2/0.0.1366.768/1366.0.1280.1024@0.0.1366.768" timestamp="1588205139848" />
     <state x="434" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1586120615403" />
-    <state x="275" y="117" key="Vcs.Push.Dialog.v2" timestamp="1586120619361">
+    <state x="275" y="117" key="Vcs.Push.Dialog.v2" timestamp="1588205213822">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="275" y="117" key="Vcs.Push.Dialog.v2/0.0.1366.768/1366.0.1280.1024@0.0.1366.768" timestamp="1585951518831" />
+    <state x="275" y="117" key="Vcs.Push.Dialog.v2/0.0.1366.768/1366.0.1280.1024@0.0.1366.768" timestamp="1588205213822" />
     <state x="275" y="117" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1586120619361" />
     <state x="379" y="208" key="com.intellij.ide.util.TipDialog" timestamp="1588201849334">
       <screen x="0" y="0" width="1366" height="768" />
