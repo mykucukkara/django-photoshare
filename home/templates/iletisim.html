@@ -1,0 +1,18 @@
+{% extends "homebase.html" %}
+
+{% block title %} İletişim - {{ setting.title }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+{% block description %}{{ setting.description }}{% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
+{% endblock %}
+
+
+{% block content %}
+    <!--<div class="row">-->
+        <div class="span12">
+            <p class="lead">{{ setting.contact | safe }}</p>
+        </div>
+	<!--</div>-->
+{% endblock %}
