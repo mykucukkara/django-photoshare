@@ -1,9 +1,10 @@
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from django.db import models
 
 # Create your views here.
-from home.models import Setting, ContactFormMessage, ContactFormu
+from home.models import Setting, ContactFormu, ContactFormMessage
 
 
 def index(request):
@@ -26,7 +27,7 @@ def referanslar(request):
 
 def iletisim(request):
     if request.method == 'POST':
-        form = ContactFormu(request.POST),
+        form = ContactFormu(request.POST)
         if form.is_valid():
             data = ContactFormMessage()
             data.name = form.cleaned_data['name']
@@ -41,3 +42,4 @@ def iletisim(request):
     form = ContactFormu()
     context = {'setting': setting, 'form': form}
     return render(request, 'iletisim.html', context)
+

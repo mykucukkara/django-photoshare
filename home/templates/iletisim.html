@@ -36,7 +36,7 @@
                 {% endfor %}
             {% endif %}
 
-            <form action="" method="post">
+            <form action="" method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <input type="submit" class="btn btn-inverse" value="Send Form">

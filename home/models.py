@@ -41,6 +41,7 @@ class ContactFormMessage(models.Model):
     STATUS = (
         ('New', 'New'),
         ('Read', 'Read'),
+        ('Closed', 'Closed'),
     )
     name = models.CharField(blank=True, max_length=50)
     email = models.CharField(blank=True, max_length=50)
@@ -61,9 +62,9 @@ class ContactFormu(ModelForm):
         model = ContactFormMessage
         fields = ['name', 'email', 'subject', 'message']
         widgets = {
-            'name': TextInput(attrs={'class': 'span4','size': 16, 'type':'text', 'placeholder': 'Name & Surname'}),
-            'subject': TextInput(attrs={'class': 'span4','size': 16, 'type':'text', 'placeholder': 'Subject'}),
-            'email': TextInput(attrs={'class': 'span4','size': 16, 'type':'text', 'placeholder': 'Email'}),
-            'message': Textarea(attrs={'class': 'span4','size': 16, 'type':'text', 'placeholder': 'Message'})
-
+            'name': TextInput(attrs={'class': 'span4', 'size': '16', 'type':'text', 'placeholder': 'Name & Surname'}),
+            'subject': TextInput(attrs={'class': 'span4', 'size': '16', 'type':'text', 'placeholder': 'Subject'}),
+            'email': TextInput(attrs={'class': 'span4', 'size': '16', 'type':'text', 'placeholder': 'Email'}),
+            'message': Textarea(attrs={'class': 'span4', 'size' : '16', 'type':'text','placeholder': 'Message'}),
         }
+
