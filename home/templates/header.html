@@ -37,13 +37,37 @@
                 </ul>
             </li>-->
              <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="gallery-4col.htm">Galeri<b class="caret"></b></a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="gallery-4col.htm">Katagoriler<b class="caret"></b></a>
+             <!-- burası katagori ayarı -->
                 <ul class="dropdown-menu">
-                    <li><a href="gallery-3col.htm">Gallery 3 Column</a></li>
-                    <li><a href="gallery-4col.htm">Gallery 4 Column</a></li>
+                 {% load mptt_tags %}
+                    {% recursetree category %}
+                        <li><a class="/category/{{ node.slug }}" href="gallery-4col.htm"  data-toggle="dropdown">{{ node.title }}<b class="caret"></b></a>
+                            {% if not node.is_leaf_node %}
+                                    <ul class="dropdown-submenu">
+                                         <li><a href="/category/{{ node.slug }}">{{ children }}</a></li>
+                                    </ul>
+                             {% endif %}
+                        </li>
+                    {% endrecursetree %}
+                </ul>
+             </li>
+             <!-- burası katagori ayarı -->
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="gallery-4col.htm">Katagoriler2<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+
+                    <li><a class="dropdown-submenu" data-toggle="dropdown" href="gallery-4col.htm">AltKatagori<b class="caret"></b></a>
+                        <ul class="dropdown-submenu">
+                            <li><a href="gallery-3col.htm">test</a></li>
+                            <li><a href="gallery-3col.htm">Gallery 3 Column</a></li>
+                            <li><a href="gallery-4col.htm">Gallery 4 Column</a></li>
+                        </ul>
+                    </li>
                     <li><a href="gallery-6col.htm">Gallery 6 Column</a></li>
                     <li><a href="gallery-4col-circle.htm">Gallery 4 Round</a></li>
                     <li><a href="gallery-single.htm">Gallery Single</a></li>
+
                 </ul>
              </li>
              <li class="dropdown">

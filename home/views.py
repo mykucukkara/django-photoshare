@@ -4,12 +4,18 @@ from django.shortcuts import render
 from django.db import models
 
 # Create your views here.
+from blog.models import Blog, Category
 from home.models import Setting, ContactFormu, ContactFormMessage
 
 
 def index(request):
     setting = Setting.objects.get(pk=1)
-    context = {'setting': setting, 'page': 'home'}
+    sliderdata = Blog.objects.all()[:4]
+    category = Category.objects.all()
+    context = {'setting': setting,
+                'page': 'home',
+               'sliderdata': sliderdata,
+               'category' : category}
     return render(request, 'index.html', context)
 
 

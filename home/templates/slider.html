@@ -3,14 +3,13 @@
     {% load static %}
     <!-- Slider Carousel
    ================================================== -->
+
     <div class="span8" >
         <div class="flexslider">
             <ul class="slides">
-                <li><a href=""><img src="{% static 'img/gallery/slider-img-1.jpg' %}" alt="slider" /></a></li>
-                <li><a href="/temps/gallery-single.htm"><img src="{% static 'img/gallery/slider-img-1.jpg' %}" alt="slider" /></a></li>
-                <li><a href="/temps/gallery-single.htm"><img src="{% static 'img/gallery/slider-img-1.jpg' %}" alt="slider" /></a></li>
-                <li><a href="/temps/gallery-single.htm"><img src="{% static 'img/gallery/slider-img-1.jpg' %}" alt="slider" /></a></li>
-                <li><a href="/temps/gallery-single.htm"><img src="{% static 'img/gallery/slider-img-1.jpg' %}" alt="slider" /></a></li>
+                {% for rs in sliderdata %}
+                <li><a href="/product/{{ rs.id }}/{{ rs.slug }}"><img src="{{ rs.image.url }}" alt="slider" /><center>{{ rs.title }}</center></a></li>
+                {% endfor %}
             </ul>
         </div>
     </div>
@@ -18,10 +17,11 @@
     <!-- Headline Text
     ================================================== -->
     <div class="span4">
-        <h3>Welcome to Piccolo. <br />
-            A Big Theme in a Small Package.</h3>
+
+        <h3>Photo Blog Sitesine Hoşgeldiniz!</h3>
         <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pretium vulputate magna sit amet blandit.</p>
         <p>Cras rutrum, massa non blandit convallis, est lacus gravida enim, eu fermentum ligula orci et tortor. In sit amet nisl ac leo pulvinar molestie. Morbi blandit ultricies ultrices.</p>
+        <p>{{ setting.description }}</p>
         <a href="#"><i class="icon-plus-sign"></i>Read More</a>
     </div>
 </div><!-- End Headline -->
