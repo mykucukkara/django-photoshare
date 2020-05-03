@@ -8,7 +8,7 @@
         <div class="flexslider">
             <ul class="slides">
                 {% for rs in sliderdata %}
-                <li><a href="/product/{{ rs.id }}/{{ rs.slug }}"><img src="{{ rs.image.url }}" alt="slider" /><center>{{ rs.title }}</center></a></li>
+                <li><a href="/blog/{{ rs.id }}/{{ rs.slug }}"><img src="{{ rs.image.url }}" alt="slider" /><center>{{ rs.title }}</center></a></li>
                 {% endfor %}
             </ul>
         </div>

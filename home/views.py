@@ -12,10 +12,19 @@ def index(request):
     setting = Setting.objects.get(pk=1)
     sliderdata = Blog.objects.all()[:4]
     category = Category.objects.all()
+    dayblogs = Blog.objects.all()[:3]
+    lastblogs = Blog.objects.all().order_by('-id')[:3]
+    randomblogsactive = Blog.objects.all().order_by('?')[:1]
+    randomblogs = Blog.objects.all().order_by('?')[:3]
+
     context = {'setting': setting,
                'page': 'home',
                'sliderdata': sliderdata,
-               'category': category}
+               'category': category,
+               'dayblogs': dayblogs,
+               'lastblogs': lastblogs,
+               'randomblogsactive': randomblogsactive, #bunu random blog gösterirken div i aktif item olanda kullanıyorum
+               'randomblogs': randomblogs}
     return render(request, 'index.html', context)
 
 
