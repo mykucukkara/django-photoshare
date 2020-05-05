@@ -71,3 +71,13 @@ def category_blogs(request, id, slug):
                'categorydata' : categorydata
                }
     return render(request, 'blogs.html', context)
+
+
+def blog_detail(request, id, slug):
+    category = Category.objects.all()
+    blog = Blog.objects.get(pk=id)
+    context = {
+               'category': category,
+                'blog' : blog
+               }
+    return render(request, 'blog_detail.html',context)

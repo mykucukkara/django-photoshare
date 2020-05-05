@@ -32,11 +32,11 @@
                         <span class="gallery-hover-3col hidden-phone hidden-tablet" style="opacity: 0; display: inline;">
                             <span class="gallery-icons">
                                 <a href="{{rs.image.url }}" class="item-zoom-link lightbox" title="{{rs.title}}" data-rel="prettyPhoto"></a>
-                                <a href="/product/{{ rs.id }}/{{ rs.slug }}" class="item-details-link"></a>
+                                <a href="/blog/{{ rs.id }}/{{ rs.slug }}" class="item-details-link"></a>
                             </span>
                         </span>
-                        <a href="/product/{{ rs.id }}/{{ rs.slug }}"><img src="{{rs.image.url }}" alt="Gallery"></a>
-                        <span class="project-details"><a href="/product/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a>{{rs.description}}</span>
+                        <a href="/blog/{{ rs.id }}/{{ rs.slug }}"><img src="{{rs.image.url }}" alt="Gallery"></a>
+                        <span class="project-details"><a href="/blog/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a>{{rs.description}}</span>
                     </li>
                         {% endif %}
                     {% endfor %}
