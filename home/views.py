@@ -5,6 +5,7 @@ from django.db import models
 
 # Create your views here.
 from blog.models import Blog, Category, Comment
+from home.forms import SearchForm
 from home.models import Setting, ContactFormu, ContactFormMessage
 
 
@@ -23,7 +24,8 @@ def index(request):
                'category': category,
                'dayblogs': dayblogs,
                'lastblogs': lastblogs,
-               'randomblogsactive': randomblogsactive, #bunu random blog gösterirken div i aktif item olanda kullanıyorum
+               'randomblogsactive': randomblogsactive,
+               # bunu random blog gösterirken div i aktif item olanda kullanıyorum
                'randomblogs': randomblogs}
     return render(request, 'index.html', context)
 
@@ -68,7 +70,7 @@ def category_blogs(request, id, slug):
     blogs = Blog.objects.filter(category_id=id)
     context = {'blogs': blogs,
                'category': category,
-               'categorydata' : categorydata
+               'categorydata': categorydata
                }
     return render(request, 'blogs.html', context)
 
@@ -78,8 +80,23 @@ def blog_detail(request, id, slug):
     blog = Blog.objects.get(pk=id)
     comments = Comment.objects.filter(blog_id=id, status='True')
     context = {
-               'category': category,
-                'blog' : blog,
-                'comments' : comments
-               }
+        'category': category,
+        'blog': blog,
+        'comments': comments
+    }
     return render(request, 'blog_detail.html', context)
+
+
+def blog_search(request):
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            category = Category.objects.all()
+            query = form.cleaned_data['query']
+            blogs = Blog.objects.filter(title__icontains=query)
+            context = {'blogs': blogs,
+                       'category': category,
+                       'query' : query, #kelimeyi sayfaya gönderdim, kullanıcının hangi kelimeyi aradığını bilmesi için.
+                       }
+            return render(request, 'blog_search.html', context)
+    return HttpResponseRedirect('/')

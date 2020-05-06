@@ -1,0 +1,35 @@
+{% extends "homebase.html" %}
+
+{% block title %} Blog Search Results {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+{% block description %}{{ setting.description }}{% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
+{% endblock %}
+
+
+{% block content %}
+    <!--<div class="row">-->
+    <h6 class="title-bg">"{{ query }}" kelimesi için arama sonucunuz.</h6>
+    <div class="span12">
+    <div class="row clearfix no-margin">
+            <ul class="gallery-post-grid holder">
+        {% for rs in blogs %}
+            <li  class="span3 gallery-item" data-id="id-1" data-type="illustration">
+                        <!--<span class="gallery-hover-4col hidden-phone hidden-tablet">
+                            <span class="gallery-icons">
+                                <a href="{{rs.image.url}}" class="item-zoom-link lightbox" title="{{rs.title}}" data-rel="prettyPhoto"></a>
+                                <a href="/blog/{{ rs.id }}/{{ rs.slug }}" class="item-details-link"></a>
+                            </span>
+                        </span>-->
+                        <a href="/blog/{{ rs.id }}/{{ rs.slug }}"><img src="{{rs.image.url}}" alt="Gallery"></a>
+                        <span class="project-details"><a href="/blog/{{ rs.id }}/{{ rs.slug }}">{{rs.title}}</a>{{rs.description}}</span>
+            </li>
+
+        {% endfor %}
+            </ul>
+            </div>
+    </div>
+	<!--</div>-->
+{% endblock %}
