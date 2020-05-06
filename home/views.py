@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.db import models
 
 # Create your views here.
-from blog.models import Blog, Category
+from blog.models import Blog, Category, Comment
 from home.models import Setting, ContactFormu, ContactFormMessage
 
 
@@ -76,8 +76,10 @@ def category_blogs(request, id, slug):
 def blog_detail(request, id, slug):
     category = Category.objects.all()
     blog = Blog.objects.get(pk=id)
+    comments = Comment.objects.filter(blog_id=id, status='True')
     context = {
                'category': category,
-                'blog' : blog
+                'blog' : blog,
+                'comments' : comments
                }
-    return render(request, 'blog_detail.html',context)
+    return render(request, 'blog_detail.html', context)

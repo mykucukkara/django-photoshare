@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 from mptt.admin import MPTTModelAdmin, DraggableMPTTAdmin
 
-from blog.models import Category, Blog
+from blog.models import Category, Blog, Comment
 
 
 # admin panelde arayüz işlemleri
@@ -54,6 +54,10 @@ class CategoryAdmin2(DraggableMPTTAdmin):
 
     related_blogs_cumulative_count.short_description = 'Related blogs (in tree)'
 
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ['subject', 'comment', 'blog', 'user', 'status']
+    list_filter = ['status']
 
 admin.site.register(Category, CategoryAdmin2)
 admin.site.register(Blog, BlogAdmin)
+admin.site.register(Comment,CommentAdmin)

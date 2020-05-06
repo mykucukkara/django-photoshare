@@ -8,7 +8,7 @@
     <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
 {% endblock %}
 
-
+{% load static %}
 {% block content %}
         <div class="span12">
 
@@ -58,66 +58,72 @@
         <!-- Post Comments
         ================================================== -->
             <section class="comments">
-                <h4 class="title-bg"><a name="comments"></a>5 Comments so far</h4>
+                <h4 class="title-bg"><a name="comments"></a>Yorumlar({{ comments.count }})</h4>
                <ul>
                     <li>
-                        <img src="img/user-avatar.jpg" alt="Image" />
-                        <span class="comment-name">John Doe</span>
-                        <span class="comment-date">March 15, 2015 | <a href="#">Reply</a></span>
-                        <div class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam venenatis, ligula quis sagittis euismod, odio ante molestie tortor, eget ullamcorper lacus nunc a ligula. Donec est lacus, aliquet in interdum id, rutrum ac tellus. Ut rutrum, justo et lobortis commodo, est metus ornare tortor, vitae luctus turpis leo sed magna. In leo dolor, suscipit non mattis in.</div>
+                        {% for rs in comments %}
+                            <h4 class="title-bg">{{ rs.subject }}</h4>
+                        <span class="comment-name">{{rs.user}}   |</span><!--burada {{rs.user.first_name}} hoca -->
+                        <span class="comment-date">    {{rs.create_at}}</span>
+                        <div class="comment-content">{{rs.comment}}</div><br>
+                            {% if rs.rate >= 75 %}
+                            <h6>Puan</h6>
+                            <div class="progress progress-success progress-striped">
+                                <div class="bar" style="width: {{ rs.rate }}%">{{ rs.rate }}</div>
+                            </div>
+                            {% elif rs.rate < 75 and rs.rate > 25 %}
+                            <h6>Puan</h6>
+                            <div class="progress progress-warning progress-striped">
+                                <div class="bar" style="width: {{ rs.rate }}%"><b>{{ rs.rate }}</b></div>
+                            </div></h6>
+                            {% elif rs.rate <= 25 %}
+                            <h6>Puan</h6>
+                            <div class="progress progress-danger progress-striped">
+                                <div class="bar" style="width: {{ rs.rate }}%"><b>{{ rs.rate }}</b></div>
+                            </div></h6>
+                            {% elif rs.rate == 0 %}
+                            <h6>Puan</h6>
+                            <div class="progress progress-danger progress-striped">
+                                <div class="bar" style="width: 100%"><b>0</b></div>
+                            </div></h6>
+                            {% endif %}
+                        {% endfor %}
                         <!-- Reply -->
-                        <ul>
-                            <li>
-                                <img src="img/user-avatar.jpg" alt="Image" />
-                                <span class="comment-name">Jason Doe</span>
-                                <span class="comment-date">March 15, 2015 | <a href="#">Reply</a></span>
-                                <div class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam venenatis, ligula quis sagittis euismod, odio ante molestie tortor, eget ullamcorper lacus nunc a ligula. Donec est lacus, aliquet in interdum id, rutrum ac tellus. Ut rutrum, justo et lobortis commodo, est metus ornare tortor, vitae luctus turpis leo sed magna. In leo dolor, suscipit non mattis in.</div>
-                                </li>
-                             <li>
-                                <img src="img/user-avatar.jpg" alt="Image" />
-                                <span class="comment-name">Jason Doe</span>
-                                <span class="comment-date">March 15, 2015 | <a href="#">Reply</a></span>
-                                <div class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam venenatis, ligula quis sagittis euismod, odio ante molestie tortor, eget ullamcorper lacus nunc a ligula. Donec est lacus, aliquet in interdum id, rutrum ac tellus. Ut rutrum, justo et lobortis commodo, est metus ornare tortor, vitae luctus turpis leo sed magna. In leo dolor, suscipit non mattis in.</div>
-                                </li>
-                         </ul>
                     </li>
-                    <li>
-                        <img src="img/user-avatar.jpg" alt="Image" />
-                        <span class="comment-name">John Doe</span>
-                        <span class="comment-date">March 15, 2015 | <a href="#">Reply</a></span>
-                        <div class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam venenatis, ligula quis sagittis euismod, odio ante molestie tortor, eget ullamcorper lacus nunc a ligula. Donec est lacus, aliquet in interdum id, rutrum ac tellus. Ut rutrum, justo et lobortis commodo, est metus ornare tortor, vitae luctus turpis leo sed magna. In leo dolor, suscipit non mattis in.</div>
-                    </li>
-                    <li>
-                        <img src="img/user-avatar.jpg" alt="Image" />
-                        <span class="comment-name">John Doe</span>
-                        <span class="comment-date">March 15, 2015 | <a href="#">Reply</a></span>
-                        <div class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam venenatis, ligula quis sagittis euismod, odio ante molestie tortor, eget ullamcorper lacus nunc a ligula. Donec est lacus, aliquet in interdum id, rutrum ac tellus. Ut rutrum, justo et lobortis commodo, est metus ornare tortor, vitae luctus turpis leo sed magna. In leo dolor, suscipit non mattis in.</div>
-                    </li>
-
                </ul>
 
                 <!-- Comment Form -->
                 <div class="comment-form-container">
-                    <h6>Leave a Comment</h6>
-                    <form action="#" id="comment-form">
+                    <h6>Fotoğraf hakkında yorum bırakabilirsiniz</h6>
+                    {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-info">
+                                        <button type="button" class="close" data-dismiss="alert">×</button>
+                                        <strong>!!!</strong> {{ message }}
+                                    </div>
+
+
+                                {% endfor %}
+                            {% endif %}
+                    <form action="/blog/addcomment/{{ blog.id }}" id="comment-form" method="post">
+                        {% csrf_token %}
                         <div class="input-prepend">
-                            <span class="add-on"><i class="icon-user"></i></span>
-                            <input class="span4" id="prependedInput" size="16" type="text" placeholder="Name">
+                            <span class="add-on"><i class="icon-thumbs-up"></i></span>
+                            <input class="span4" id="id_subject" size="16" type="text" name="subject" placeholder="Subject">
                         </div>
                         <div class="input-prepend">
-                            <span class="add-on"><i class="icon-envelope"></i></span>
-                            <input class="span4" id="prependedInput" size="16" type="text" placeholder="Email Address">
+                            <span class="add-on"><i class="icon-star"></i></span>
+                            <input class="span4" id="id_rate" size="16" type="number" name="rate" placeholder="Your Rate (0 - 100)">
                         </div>
-                        <div class="input-prepend">
-                            <span class="add-on"><i class="icon-globe"></i></span>
-                            <input class="span4" id="prependedInput" size="16" type="text" placeholder="Website URL">
-                        </div>
-                        <textarea class="span6"></textarea>
-                        <div class="row">
-                            <div class="span2">
-                                <input type="submit" class="btn btn-inverse" value="Post My Comment">
-                            </div>
-                        </div>
+                        <textarea class="span6" name="comment" id="id_comment" placeholder="Your Comment"></textarea>
+                                {% if user.id is not none %}
+                                <div class="row"><div class="span2"><input type="submit" class="btn btn-inverse" value="Gönder"></div></div>
+                                {% else %}
+                                <div class="alert alert-error">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    <strong>Uyarı!</strong> Lütfen <a href="#"> oturum aç</a>ınız!
+                                </div>
+                                {% endif %}
                     </form>
                 </div>
         </section><!-- Close comments section-->
