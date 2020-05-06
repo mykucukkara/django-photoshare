@@ -1,6 +1,6 @@
-<header>
-
 {% load static %}
+
+<header>
 
     <div class="row header"><!-- Begin Header -->
         <!-- Logo
@@ -118,11 +118,42 @@
                 </div>
                 </form>
              <div class="span4 right">
+                 <script>
+                  $(function() {
+                    $("#query").autocomplete({
+                      source: "/search_auto/",
+                      select: function (event, ui) { //item selected
+                        AutoCompleteSelectHandler(event, ui)
+                      },
+                      minLength: 2,
+                    });
+                  });
+
+                  function AutoCompleteSelectHandler(event, ui)
+                  {
+                     var selectedObj = ui.item;
+                  }
+            </script>
             <form class="form-search right" action="/search/" method="post">
                 {% csrf_token %}
             <div class="input-append">
-                <input name="query" type="text" class="span2 search-query">
+                {% load mptt_tags %}
+                <select name="catid" class="search-query">
+                    <option value="0">All Categories</option>
+                    {% recursetree category %}
+                        {% if node.is_leaf_node %}
+                            <option value="{{node.id}}">{{node.title}}</option>
+                        {% endif %}
+                        {% if not node.is_leaf_node %}
+                             <optgroup label="{{ node.title }}">
+                                {{children}}
+                            </optgroup>
+                        {% endif %}
+                    {% endrecursetree %}
+                </select>
+                <input id="query" name="query" type="text" class="span2">
                 <button type="submit" class="btn">Search</button>
+
             </div>
             </form>
             </div>

@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.db import models
-
+import json
 # Create your views here.
 from blog.models import Blog, Category, Comment
 from home.forms import SearchForm
@@ -93,10 +93,32 @@ def blog_search(request):
         if form.is_valid():
             category = Category.objects.all()
             query = form.cleaned_data['query']
+            catid = form.cleaned_data['catid']
             blogs = Blog.objects.filter(title__icontains=query)
+            if catid == 0:
+                blogs = Blog.objects.filter(title__icontains=query)
+            else:
+                blogs = Blog.objects.filter(title__icontains=query, category_id=catid)
             context = {'blogs': blogs,
                        'category': category,
-                       'query' : query, #kelimeyi sayfaya gönderdim, kullanıcının hangi kelimeyi aradığını bilmesi için.
+                       'query': query,
+                       # kelimeyi sayfaya gönderdim, kullanıcının hangi kelimeyi aradığını bilmesi için.
                        }
             return render(request, 'blog_search.html', context)
     return HttpResponseRedirect('/')
+
+
+def blog_search_auto(request):
+    if request.is_ajax():
+        q = request.GET.get('term', '')
+        blog = Blog.objects.filter(title__icontains=q)
+        results = []
+        for rs in blog:
+            blog_json = {}
+            blog_json = rs.city + "," + rs.state
+            results.append(blog_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
