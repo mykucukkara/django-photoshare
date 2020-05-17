@@ -4,6 +4,7 @@ from django.db import models
 
 # Create your models here.
 from django.forms import ModelForm
+from django.urls import reverse
 from django.utils.safestring import mark_safe
 from mptt.models import MPTTModel, TreeForeignKey
 
@@ -18,7 +19,7 @@ class Category(MPTTModel):
     keywords = models.CharField(blank=True, max_length=200)
     image = models.ImageField(blank=True, upload_to='images/')
     status = models.CharField(max_length=10, choices=STATUS)
-    slug = models.SlugField()
+    slug = models.SlugField(null=False, unique=True)
     parent = TreeForeignKey('self', blank=True, null=True, related_name='childiren', on_delete=models.CASCADE)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
@@ -35,6 +36,9 @@ class Category(MPTTModel):
             k = k.parent
         return ' -> '.join(full_path[::-1])
 
+    def get_absolute_url(self):
+        return reverse('article_detail', kwargs={'slug': self.slug})
+
 
 class Blog(models.Model):
     STATUS = (
@@ -47,7 +51,7 @@ class Blog(models.Model):
     description = models.CharField(blank=True, max_length=255)
     image = models.ImageField(blank=True, upload_to='images/')
     detail = RichTextUploadingField()
-    slug = models.SlugField(blank=True, max_length=150)
+    slug = models.SlugField(null=False, unique=True)
     status = models.CharField(max_length=10, choices=STATUS)
     create_at = models.DateTimeField(auto_now_add=True)
     uptade_at = models.DateTimeField(auto_now=True)
@@ -59,6 +63,10 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('blog_detail', kwargs={'slug': self.slug})
+
 
 class Comment(models.Model):
     STATUS = (

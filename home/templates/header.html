@@ -1,4 +1,5 @@
 {% load static %}
+<!-- jQuery !-->
 
 <header>
 
@@ -118,7 +119,7 @@
                 </div>
                 </form>
              <div class="span4 right">
-                 <script>
+                 <!--<script>
                   $(function() {
                     $("#query").autocomplete({
                       source: "/search_auto/",
@@ -132,8 +133,7 @@
                   function AutoCompleteSelectHandler(event, ui)
                   {
                      var selectedObj = ui.item;
-                  }
-            </script>
+                  }-->
             <form class="form-search right" action="/search/" method="post">
                 {% csrf_token %}
             <div class="input-append">

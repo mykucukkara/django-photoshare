@@ -1,4 +1,5 @@
- <div class="row gallery-row"><!-- Begin Gallery Row -->
+
+<div class="row gallery-row"><!-- Begin Gallery Row -->
 {% load static %}
     	<div class="span12">
             <h5 class="title-bg">Popular Blogs of The Day
@@ -15,12 +16,12 @@
                     <!-- Gallery Item 1 -->
                 {% for rs in dayblogs %}
                     <li  class="span3 gallery-item" data-id="id-1" data-type="illustration">
-                        <span class="gallery-hover-4col hidden-phone hidden-tablet">
-                            <span class="gallery-icons">
+                         <!--<span class="gallery-hover-4col hidden-phone hidden-tablet">
+                           <span class="gallery-icons">
                                 <a href="{{rs.image.url}}" class="item-zoom-link lightbox" title="{{rs.title}}" data-rel="prettyPhoto"></a>
                                 <a href="/blog/{{ rs.id }}/{{ rs.slug }}" class="item-details-link"></a>
                             </span>
-                        </span>
+                        </span>-->
                         <a href="/blog/{{ rs.id }}/{{ rs.slug }}"><img src="{{rs.image.url}}" alt="Gallery"></a>
                         <span class="project-details"><a href="/blog/{{ rs.id }}/{{ rs.slug }}">{{rs.title}}</a>{{rs.description}}</span>
                     </li>
