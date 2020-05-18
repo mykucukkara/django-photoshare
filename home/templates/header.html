@@ -13,6 +13,7 @@
 
         <!-- Main Navigation
         ================================================== -->
+
         <div class="span7 navigation">
             <div class="navbar hidden-phone">
 
@@ -38,7 +39,7 @@
                 </ul>
             </li>-->
              <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Katagoriler<b class="caret"></b></a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Kategoriler<b class="caret"></b></a>
             {% load mptt_tags %}
                 <ul class="dropdown-menu">
                     {% recursetree category %}
@@ -85,6 +86,7 @@
             </ul>
 
             </div>
+
 
             <!-- Mobile Nav
             ================================================== -->
@@ -157,6 +159,20 @@
             </div>
             </form>
             </div>
+            <div class="span3 right">
+            {% if user.id is not None %}
+                <li class="dropdown">
+                <strong>Hoşgeldin {{ user.firt_name }}!</strong>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="blog-style1.htm">Üye İşlemleri <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/logout/">Logout</a></li>
+                </ul>
+                </li>
+            {% else %}
+                <strong>Lütfen <a href="/login/">oturum aç</a>ınız yada <a href="signup">kaydol</a>unuz!</strong>
+            {% endif %}
+            </div>
+
 
         </div>
     </div>

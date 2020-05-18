@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4bffedd5-2e77-43ab-8e14-7cc3bb919144" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/myk_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/myk_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/content.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/content.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/homebase.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/homebase.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/slider.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/slider.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photoblogproject/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/photoblogproject/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +113,7 @@
       <workItem from="1588798170064" duration="6921000" />
       <workItem from="1589236552748" duration="158000" />
       <workItem from="1589249306953" duration="573000" />
-      <workItem from="1589752925433" duration="2499000" />
+      <workItem from="1589752925433" duration="7619000" />
     </task>
     <task id="LOCAL-00001" summary="yazım hataları giderildi">
       <created>1585750833704</created>
@@ -295,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588804507845</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Added Slug System and Search System Disabled(Not Worked)">
+      <created>1589755654500</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1589755654500</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -324,26 +326,27 @@
     <MESSAGE value="Added Comment System" />
     <MESSAGE value="Added Search System" />
     <MESSAGE value="Added Search System(Details - Video 21)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Search System(Details - Video 21)" />
+    <MESSAGE value="Added Slug System and Search System Disabled(Not Worked)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Slug System and Search System Disabled(Not Worked)" />
   </component>
   <component name="WindowStateProjectService">
     <state x="137" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585750613860">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="137" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.768/1366.0.1280.1024@0.0.1366.768" timestamp="1585750613860" />
-    <state x="434" y="0" key="CommitChangelistDialog2" timestamp="1588804506938">
+    <state x="434" y="0" key="CommitChangelistDialog2" timestamp="1589755653513">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="434" y="0" key="CommitChangelistDialog2/0.0.1366.768/1366.0.1280.1024@0.0.1366.768" timestamp="1588804506938" />
+    <state x="434" y="0" key="CommitChangelistDialog2/0.0.1366.768/1366.0.1280.1024@0.0.1366.768" timestamp="1589755653513" />
     <state x="434" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1586120615403" />
     <state x="528" y="106" key="RollbackChangesDialog" timestamp="1588801436194">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="528" y="106" key="RollbackChangesDialog/0.0.1366.768/1366.0.1280.1024@0.0.1366.768" timestamp="1588801436194" />
-    <state x="275" y="117" key="Vcs.Push.Dialog.v2" timestamp="1588804511174">
+    <state x="275" y="117" key="Vcs.Push.Dialog.v2" timestamp="1589755658350">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="275" y="117" key="Vcs.Push.Dialog.v2/0.0.1366.768/1366.0.1280.1024@0.0.1366.768" timestamp="1588804511174" />
+    <state x="275" y="117" key="Vcs.Push.Dialog.v2/0.0.1366.768/1366.0.1280.1024@0.0.1366.768" timestamp="1589755658350" />
     <state x="275" y="117" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1586120619361" />
     <state x="379" y="208" key="com.intellij.ide.util.TipDialog" timestamp="1589752943209">
       <screen x="0" y="0" width="1366" height="768" />

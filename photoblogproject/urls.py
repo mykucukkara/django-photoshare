@@ -33,6 +33,8 @@ urlpatterns = [
     path('blog/<int:id>/<slug:slug>/', views.blog_detail, name='blog_detail'),
     path('search/', views.blog_search, name='blog_search'),
     path('search_auto/', views.blog_search_auto, name='blog_search_auto'),
+    path('logout/', views.logout_view, name='logout_view'),
+    path('login/', views.login_view, name='login_view'),
 ]
 if settings.DEBUG: # new
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

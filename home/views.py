@@ -7,6 +7,7 @@ import json
 from blog.models import Blog, Category, Comment
 from home.forms import SearchForm
 from home.models import Setting, ContactFormu, ContactFormMessage
+from django.contrib.auth import logout, authenticate, login
 
 
 def index(request):
@@ -122,3 +123,24 @@ def blog_search_auto(request):
         data = 'fail'
     mimetype = 'application/json'
     return HttpResponse(data, mimetype)
+
+
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/')
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect('/')
+        else:
+            messages.error(request, "Hatalı giriş yaptınız. Lütfen kullanıcı adı yada şifrenizi kontrol ediniz..")
+            return HttpResponseRedirect('/login')
+    category = Category.objects.all()
+    context = {'category': category,}
+    return render(request, 'login.html', context)
