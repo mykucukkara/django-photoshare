@@ -1,6 +1,6 @@
 {% extends "homebase.html" %}
 
-{% block title %} İletişim - {{ setting.title }} {% endblock %}
+{% block title %} Kayıt Ol {{ setting.title }} {% endblock %}
 {% block keywords %} {{ setting.keywords }} {% endblock %}
 {% block description %}{{ setting.description }}{% endblock %}
 
@@ -17,17 +17,9 @@
         </div>
 	</div>-->
     <div class="row"><!--Container row-->
-
-        <div class="span8 contact"><!--Begin page content column-->
-
-            <h2>Bizimle İletişime Geç!</h2>
-            <p>{{ setting.contact|safe }}</p>
-
-            <!--<div class="alert alert-success">
-                Well done! You successfully read this important alert message.
-            </div>-->
-            <h5 class="title-bg">İletişim Formu</h5>
-
+        <div class="span12"><!--Begin page content column-->
+            <h2>Kayıt Ol!</h2>
+            <h5 class="title-bg"></h5>
             {% if messages %}
                 {% for message in messages %}
                     <div class="alert alert-{{ message.tags }}" role="alert">
@@ -36,12 +28,24 @@
                 {% endfor %}
             {% endif %}
 
-            <form action="" method="POST">
+            <form method="POST">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" class="btn btn-inverse" value="Send Form">
+                {% for field in form %}
+                    <p>
+                    {{ field.label_tag }}<br>
+                    {{ field }}
+                    {% if field.help_text %}<br>
+                        <small style="color:grey">{{ field.help_text }}</small>
+                    {% endif %}
+                    {% for error in field.errors %}
+                        <p style="color: red">{{ error }}</p>
+                     {% endfor %}
+                    </p>
+                {% endfor %}
+            <input type="submit" class="btn btn-inverse" value="Sign Up">
             </form>
 
+            </div>
             <!--
             <form action="#" id="contact-form">
                 <div class="input-prepend">
@@ -65,30 +69,10 @@
             </form>-->
 
         </div> <!--End page content column-->
-
         <!-- Sidebar
         ================================================== -->
-        <div class="span4 sidebar page-sidebar"><!-- Begin sidebar column -->
-            <h5 class="title-bg">Adres</h5>
-            <address>
-            <strong>{{ setting.company }}</strong><br>
-            {{ setting.address }}<br>
-            <abbr title="Phone">P:</abbr> {{ setting.phone }}
-             <br><abbr title="Fax">F:</abbr> {{ setting.fax }}
-            </address>
 
-            <address>
-            <strong>{{ setting.company }}</strong><br>
-            <a href="mailto:#">{{ setting.email }}</a>
-            </address>
-
-            <h5 class="title-bg">Harita</h5><br>
-            {{ setting.contact_map |safe }}
-            <!--<img src="img/location-map.jpg" alt="map">-->
-
-        </div><!-- End sidebar column -->
 
     </div><!-- End container row -->
-
     </div> <!-- End Container -->
 {% endblock %}
