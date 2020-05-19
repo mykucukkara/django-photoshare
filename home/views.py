@@ -6,7 +6,7 @@ import json
 # Create your views here.
 from blog.models import Blog, Category, Comment
 from home.forms import SearchForm, SignUpForm
-from home.models import Setting, ContactFormu, ContactFormMessage
+from home.models import Setting, ContactFormu, ContactFormMessage, UserProfile
 from django.contrib.auth import logout, authenticate, login
 
 
@@ -156,6 +156,13 @@ def signup_view(request):
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request, user)
+            # Kullanıcı için tablo oluşturulur
+            current_user = request.user
+            data = UserProfile()
+            data.user_id = current_user.id
+            data.image="images/users/user-avatar.jpg"
+            data.save()
+            messages.success(request, "Siteye başarılı şekilde üye oldunuz!")
             return HttpResponseRedirect('/')
     form = SignUpForm()
     category = Category.objects.all()

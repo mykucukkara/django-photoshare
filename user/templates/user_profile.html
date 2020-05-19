@@ -1,0 +1,46 @@
+{% extends "homebase.html" %}
+
+{% block title %} Kullanıcı Profili - {{ profile.user.username }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+{% block description %}{{ setting.description }}{% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="row"><!--Container row-->
+
+        <div class="span8 contact"><!--Begin page content column-->
+
+            <h2>User Panel</h2>
+            {% include "user_panel.html" %}
+        </div> <!--End page content column-->
+
+        <!-- Sidebar
+        ================================================== -->
+        <div class="span4 sidebar page-sidebar"><!-- Begin sidebar column -->
+            <h5 class="title-bg">User Information</h5>
+            <center><img src="{{ profile.image.url }}"></center>
+            <hr>
+             <div class="input-prepend">
+                 <span class="add-on"><i class="icon-time"></i><strong>Account Created Time:</strong> {{ profile.create_at }}</span><br>
+                 <span class="add-on"><i class="icon-user"></i><strong>Username:</strong> {{ profile.user_name }}</span><br>
+                 <span class="add-on"><strong>@ Email:</strong> {{ profile.user.email }}</span><br>
+                 <span class="add-on"><i class="icon-briefcase"></i><strong>Phone:</strong> {{ profile.phone }}</span><br>
+                 <span class="add-on"><i class="icon-home"></i><strong>Address:</strong> {{ profile.address }}</span><br>
+                 <span class="add-on"><i class="icon-info-sign"></i><strong>City:</strong> {{ profile.city }}</span><br>
+                 <span class="add-on"><i class="icon-globe"></i><strong>Country:</strong> {{ profile.country }}</span><br></div>
+
+            <h5 class="title-bg">Harita</h5><br>
+            {{ setting.contact_map |safe }}
+            <!--<img src="img/location-map.jpg" alt="map">-->
+
+        </div><!-- End sidebar column -->
+
+    </div><!-- End container row -->
+
+    </div> <!-- End Container -->
+{% endblock %}
