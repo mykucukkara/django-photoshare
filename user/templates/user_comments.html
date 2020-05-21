@@ -1,0 +1,68 @@
+<div class="content">
+    </div>
+{% extends "homebase.html" %}
+
+{% block title %} Kullanıcı Yorumları - {{ profile.user.username }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+{% block description %}{{ setting.description }}{% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="row"><!--Container row-->
+
+        <div class="span12"><!--Begin page content column-->
+
+            <h2>User Panel</h2>
+            <br>
+            <h4>User Comments</h4>
+            <br>
+        {% if messages %}
+            {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}" role="alert">
+                    {{ message }}
+                    </div>
+                {% endfor %}
+            <br>
+            {% endif %}
+
+            <table border=1 frame=void rules=rows>
+                <tr>
+                    <th class="text">Photo </th>
+                    <th class="text">Rate </th>
+                    <th class="text">Subject </th>
+                    <th class="text">Comment </th>
+                    <th class="text">Status</th>
+                    <th class="text">Date</th>
+                    <th class="text">Detail</th>
+                </tr>
+                {% for rs in comments %}
+                <tr>
+                <td class="text"><a href="/blog/{{ rs.blog_id }}/{{ rs.blog.slug }}"> <strong><small>{{ rs.blog.title }}</small></strong></a></td>
+                    <td class="text"><small>{{ rs.rate }}</small></td>
+                    <td class="text"><small>{{ rs.subject }}</small></td>
+                    <td class="text"><small>{{ rs.comment }}</small></td>
+                <td class="text"><small>{{ rs.status }}</small></td>
+                <td class="text"><small>{{ rs.create_at }}</small></td>
+                    <td class="text"><a href="/user/deletecomment/{{ rs.id }}" onclick="return confirm('Will be delete! Are you sure?')"><button class="btn btn-inverse" type="button">Delete</button></a></td>
+                </tr>
+                {% endfor %}
+            </table>
+            <br>
+            <a href="/user"><button class="btn btn-inverse" type="button">Back</button></a>
+{#            <a class="btn-primary" href="/user/deletecomment/{{ rs.id }}" onclick="return confirm('Will be delete! Are you sure?')">Delete</a> #}
+
+        </div> <!--End page content column-->
+
+        <!-- Sidebar
+        ================================================== -->
+
+
+    </div><!-- End container row -->
+
+    </div> <!-- End Container -->
+{% endblock %}

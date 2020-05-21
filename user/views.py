@@ -35,8 +35,8 @@ def user_update(request):
         user_form = UserUpdateForm(instance=request.user)
         profile_form = ProfileUpdateForm(instance=request.user.userprofile)
         context = {'category': category,
-                  'profile_form': profile_form,
-                  'user_form': user_form}
+                   'profile_form': profile_form,
+                   'user_form': user_form}
         return render(request, 'user_update.html', context)
 
 
@@ -48,7 +48,7 @@ def change_password(request):
             user = form.save()
             update_session_auth_hash(request, user)
             messages.success(request, 'Your password was succesfully updated!')
-            #return redirect('/user')
+            # return redirect('/user')
             return HttpResponseRedirect('/user')
         else:
             messages.error(request, 'Please correct the error below.<br>' + str(form.errors))
@@ -61,18 +61,16 @@ def change_password(request):
         })
 
 
+@login_required(login_url='/login')
 def comments(request):
     category = Category.objects.all()
     current_user = request.user
     comments = Comment.objects.filter(user_id=current_user.id)
-    context = {
-        'category': category,
-        'comments': comments,
-    }
-
+    context = {'category': category, 'comments': comments, }
     return render(request, 'user_comments.html', context)
 
 
+@login_required(login_url='/login')
 def deletecomment(request, id):
     current_user = request.user
     Comment.objects.filter(id=id, user_id=current_user.id).delete()
