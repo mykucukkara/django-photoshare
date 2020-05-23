@@ -1,0 +1,36 @@
+{% extends "homebase.html" %}
+
+{% block title %} Sıkça Sorulan Sorular {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+{% block description %}{{ setting.description }}{% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
+{% endblock %}
+
+
+{% block content %}
+    <!--<div class="row">-->
+    <div class="span12">
+    <div class="row clearfix no-margin">
+        {% for rs in faq %}
+            <div class="accordion" id="accordion2">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#{{rs.ordernumber}}">
+                        {{ rs.question }}
+                        </a>
+                    </div>
+                    <div id="{{ rs.ordernumber }}" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            {{ rs.question }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+    </div>
+	</div>
+{% endblock %}

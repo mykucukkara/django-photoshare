@@ -6,7 +6,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 
 # Create your views here.
-from blog.models import Category, Comment
+from blog.models import Category, Comment, Blog, BlogForm
 from home.models import UserProfile
 from user.forms import UserUpdateForm, ProfileUpdateForm
 
@@ -78,77 +78,73 @@ def deletecomment(request, id):
     return HttpResponseRedirect('/user/comments')
 
 
+@login_required(login_url='/login')  # check login
+def myblogs(request):
+    category = Category.objects.all()
+    current_user = request.user
+    myblogs = Blog.objects.filter(user_id=current_user.id)
+    context = {'category': category,
+               'myblogs': myblogs, }
+    return render(request, 'user_myblogs.html', context)
+
+
 @login_required(login_url='/login')
-def addcontent(request):
+def addblog(request):
     if request.method == 'POST':
-        form = ContentForm(request.POST, request.FILES)
+        form = BlogForm(request.POST, request.FILES)
         if form.is_valid():
             current_user = request.user
-            data = Content()
+            data = Blog()
             data.user_id = current_user.id
             data.title = form.cleaned_data['title']
             data.keywords = form.cleaned_data['keywords']
             data.description = form.cleaned_data['description']
             data.image = form.cleaned_data['image']
-            data.type = form.cleaned_data['type']
+            data.category = form.cleaned_data['category']
             data.slug = form.cleaned_data['slug']
             data.detail = form.cleaned_data['detail']
             data.status = 'False'
             data.save()
-            messages.success(request, 'Your Content Inserted Successfuly')
-            return HttpResponseRedirect('/user/contents')
+            messages.success(request, 'Your Blog Inserted Successfuly')
+            return HttpResponseRedirect('/user/myblogs')
         else:
-            messages.success(request, 'Content Form Error :' + str(form.errors))
-            return HttpResponseRedirect('/user/addcontent')
+            messages.success(request, 'Blog Form Error :' + str(form.errors))
+            return HttpResponseRedirect('/user/addblog')
     else:
         category = Category.objects.all()
-        menu = Menu.objects.all()
-        form = ContentForm()
+        form = BlogForm()
         context = {
             'category': category,
-            'menu': menu,
             'form': form,
         }
-        return render(request, 'user_addcontent.html', context)
+        return render(request, 'user_addblog.html', context)
 
 
 @login_required(login_url='/login')  # check login
-def contentedit(request, id):
-    content = Content.objects.get(id=id)
+def editblog(request, id):
+    blog = Blog.objects.get(id=id)
     if request.method == 'POST':
-        form = ContentForm(request.POST, request.FILES, instance=content)
+        form = BlogForm(request.POST, request.FILES, instance=blog)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Your content updated successfuly!')
-            return HttpResponseRedirect('/user/contents')
+            messages.success(request, 'Your blog updated successfuly!')
+            return HttpResponseRedirect('/user/myblogs')
         else:
             messages.error(request, 'Content Form Error: ' + str(form.errors))
-            return HttpResponseRedirect('/user/contentedit/' + str(id))
+            return HttpResponseRedirect('/user/editblog/' + str(id))
     else:
         category = Category.objects.all()
-        menu = Menu.objects.all()
-        form = ContentForm(instance=content)
+        form = BlogForm(instance=blog)
         context = {'category': category,
-                   'menu': menu,
                    'form': form}
-    return render(request, 'user_addcontent.html', context)
+    return render(request, 'user_editblog.html', context)
+
+
 
 
 @login_required(login_url='/login')  # check login
-def contents(request):
-    category = Category.objects.all()
-    menu = Menu.objects.all()
+def deleteblog(request, id):
     current_user = request.user
-    contents = Content.objects.filter(user_id=current_user.id)
-    context = {'category': category,
-               'menu': menu,
-               'contents': contents}
-    return render(request, 'user_contents.html', context)
-
-
-@login_required(login_url='/login')  # check login
-def contentdelete(request, id):
-    current_user = request.user
-    Content.objects.filter(id=id, user_id=current_user.id, ).delete()
-    messages.success(request, 'Content deleted...')
-    return HttpResponseRedirect('/user/contents')
+    Blog.objects.filter(id=id, user_id=current_user.id, ).delete()
+    messages.success(request, 'Blog deleted...')
+    return HttpResponseRedirect('/user/myblogs')

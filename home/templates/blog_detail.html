@@ -38,8 +38,8 @@
                     <div class="post-summary-footer">
                         <ul class="post-data">
                             <li><i class="icon-calendar"></i>{{ blog.create_at }}</li>
-                            <li><i class="icon-user"></i> <a href="#">Admin</a></li>
-                            <li><i class="icon-comment"></i> <a href="#">5 Comments</a></li>
+                            <li><i class="icon-user"></i> <a href="#">{{ blog.user.username }}</a></li>
+                            <li><i class="icon-comment"></i> <a href="#">{{ comments.count }}</a></li>
                             <li><i class="icon-tags"></i> <a href="/category/{{ blog.category_id }}/{{ blog.category.slug }}">{{ blog.category }}</a></li>
                         </ul>
                     </div>
@@ -49,8 +49,7 @@
             <!-- About the Author -->
             <section class="post-content">
                 <div class="post-body about-author">
-                    <img src="img/author-avatar.jpg" alt="author">
-                    <h4>About Nathan Brown</h4>
+                    <h4>About {{ blog.user.first_name }} {{ blog.user.last_name }}</h4>
                     Proin tristique tellus in est vulputate luctus fermentum ipsum molestie. Vivamus tincidunt sem eu magna varius elementum. Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et urna. Nulla faucibus ligula eget ante varius ac euismod odio placerat. Nam sit amet felis non lorem faucibus rhoncus vitae id dui.
                 </div>
             </section>

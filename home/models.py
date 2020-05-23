@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.forms import ModelForm, TextInput, Textarea
 
-
 # Create your models here.
 from django.utils.safestring import mark_safe
 
@@ -66,10 +65,10 @@ class ContactFormu(ModelForm):
         model = ContactFormMessage
         fields = ['name', 'email', 'subject', 'message']
         widgets = {
-            'name': TextInput(attrs={'class': 'span4', 'size': '16', 'type':'text', 'placeholder': 'Name & Surname'}),
-            'subject': TextInput(attrs={'class': 'span4', 'size': '16', 'type':'text', 'placeholder': 'Subject'}),
-            'email': TextInput(attrs={'class': 'span4', 'size': '16', 'type':'text', 'placeholder': 'Email'}),
-            'message': Textarea(attrs={'class': 'span4', 'size' : '16', 'type':'text','placeholder': 'Message'}),
+            'name': TextInput(attrs={'class': 'span4', 'size': '16', 'type': 'text', 'placeholder': 'Name & Surname'}),
+            'subject': TextInput(attrs={'class': 'span4', 'size': '16', 'type': 'text', 'placeholder': 'Subject'}),
+            'email': TextInput(attrs={'class': 'span4', 'size': '16', 'type': 'text', 'placeholder': 'Email'}),
+            'message': Textarea(attrs={'class': 'span4', 'size': '16', 'type': 'text', 'placeholder': 'Message'}),
         }
 
 
@@ -90,13 +89,27 @@ class UserProfile(models.Model):
 
     def image_tag(self):
         return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
+
     image_tag.short_description = 'Image'
 
 
 class UserProfileForm(ModelForm):
     class Meta:
         model = UserProfile
-        fields = ['phone', 'address', 'city', 'country', 'image',]
+        fields = ['phone', 'address', 'city', 'country', 'image', ]
 
 
+class FAQ(models.Model):
+    STATUS = (
+        ('True', 'Evet'),
+        ('False', 'Hayır'),
+    )
+    ordernumber = models.IntegerField()
+    question = models.CharField(max_length=150)
+    answer = models.TextField(max_length=500)
+    status = models.CharField(max_length=10, choices=STATUS)
+    create_at = models.DateTimeField(auto_now_add=True)
+    uptade_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.question

@@ -1,9 +1,16 @@
 <component name="ProjectDictionaryState">
   <dictionary name="myk_1">
     <words>
+      <w>addblog</w>
+      <w>blogdelete</w>
+      <w>blogedit</w>
+      <w>deleteblog</w>
+      <w>deletecomment</w>
       <w>flexslider</w>
       <w>hakkimizda</w>
       <w>lightbox</w>
+      <w>myblogs</w>
+      <w>ordernumber</w>
     </words>
   </dictionary>
 </component>

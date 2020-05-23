@@ -1,9 +1,10 @@
+from ckeditor.widgets import CKEditorWidget
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
-from django.forms import ModelForm
+from django.forms import ModelForm, TextInput, FileInput, Select
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 from mptt.models import MPTTModel, TreeForeignKey
@@ -46,6 +47,7 @@ class Blog(models.Model):
         ('False', 'Hayır'),
     )
     category = models.ForeignKey(Category, on_delete=models.CASCADE)  # relation with category table (UP)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     title = models.CharField(max_length=150)
     keywords = models.CharField(blank=True, max_length=255)
     description = models.CharField(blank=True, max_length=255)
@@ -58,6 +60,7 @@ class Blog(models.Model):
 
     def image_tag(self):
         return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
+
     image_tag.short_description = 'Image'
 
     def __str__(self):
@@ -74,7 +77,7 @@ class Comment(models.Model):
         ('False', 'Hayır')
     )
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
     subject = models.CharField(max_length=50)
     comment = models.TextField(max_length=200)
     rate = models.IntegerField()
@@ -93,3 +96,17 @@ class CommentForm(ModelForm):
         fields = ['subject', 'comment', 'rate']
 
 
+class BlogForm(ModelForm):
+    class Meta:
+        model = Blog
+        fields = ['title', 'slug', 'category', 'keywords', 'description', 'image', 'detail']
+        widgets = {
+            'title': TextInput(attrs={'class': 'input', 'placeholder': 'title'}),
+            'slug': TextInput(attrs={'class': 'input', 'placeholder': 'slug'}),
+            'category': Select(attrs={'class': 'input', 'placeholder': 'category'}, choices=Category.objects.all()),
+            'keywords': TextInput(attrs={'class': 'input', 'placeholder': 'keywords'}),
+            'description': TextInput(attrs={'class': 'input', 'placeholder': 'description'}),
+            'image': FileInput(attrs={'class': 'input', 'placeholder': 'image'}),
+            'detail': CKEditorWidget(),
+
+        }

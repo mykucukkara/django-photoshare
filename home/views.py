@@ -6,7 +6,7 @@ import json
 # Create your views here.
 from blog.models import Blog, Category, Comment
 from home.forms import SearchForm, SignUpForm
-from home.models import Setting, ContactFormu, ContactFormMessage, UserProfile
+from home.models import Setting, ContactFormu, ContactFormMessage, UserProfile, FAQ
 from django.contrib.auth import logout, authenticate, login
 
 
@@ -14,10 +14,10 @@ def index(request):
     setting = Setting.objects.get(pk=1)
     sliderdata = Blog.objects.all()[:4]
     category = Category.objects.all()
-    dayblogs = Blog.objects.all()[:3]
-    lastblogs = Blog.objects.all().order_by('-id')[:3]
-    randomblogsactive = Blog.objects.all().order_by('?')[:1]
-    randomblogs = Blog.objects.all().order_by('?')[:3]
+    dayblogs = Blog.objects.filter(status='True')[:3]
+    lastblogs = Blog.objects.filter(status='True').order_by('-id')[:3]
+    randomblogsactive = Blog.objects.filter(status='True').order_by('?')[:1]
+    randomblogs = Blog.objects.filter(status='True').order_by('?')[:3]
 
     context = {'setting': setting,
                'page': 'home',
@@ -169,3 +169,9 @@ def signup_view(request):
     context = {'category': category,
                'form': form, }
     return render(request, 'signup.html', context)
+
+def faq(request):
+    category = Category.objects.all()
+    faq = FAQ.objects.all().order_by('ordernumber')
+    context = {'category': category, 'faq': faq}
+    return render(request,'faq.html',context)

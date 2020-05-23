@@ -1,0 +1,49 @@
+<div class="content">
+    </div>
+
+
+{% extends "homebase.html" %}
+
+{% block title %} Blog Ekleme {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+{% block description %}{{ setting.description }}{% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="row"><!--Container row-->
+
+        <div class="span8 contact"><!--Begin page content column-->
+
+            <h2>User Panel</h2>
+            <h4>Add Blog</h4>
+{% if messages %}
+            {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}" role="alert">
+                    {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                    {{ form.media }}
+                    {{ form.as_p }}<br>
+
+            <a href="/user/myblogs"><button class="btn btn-inverse" type="button">Back</button>                      </a><input type="submit" class="btn btn-inverse" value="Update">
+            </form>
+
+        </div> <!--End page content column-->
+
+        <!-- Sidebar
+        ================================================== -->
+
+
+    </div><!-- End container row -->
+
+    </div> <!-- End Container -->
+{% endblock %}
