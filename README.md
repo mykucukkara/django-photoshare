@@ -1,1 +1,1 @@
-# Django Photo Blog Project
+# Simple Django Photo Blog Project 
